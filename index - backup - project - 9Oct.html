@@ -1,0 +1,2008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lagoona Textiles | Premium Textile Solutions Since 1990</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // Initialize EmailJS with your Public Key
+            emailjs.init("EZW07FDmZHaSlmd0U"); // Replace with your actual Public Key
+        })();
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 80px;
+            width: 120px;
+            display: block;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-menu a:hover {
+            color: #667eea;
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* Hero Section with Video Background */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="1" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+            z-index: 3;
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 4;
+            text-align: center;
+            min-height: 70vh;
+            justify-content: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        /* Video controls */
+        .video-controls {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            z-index: 5;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .video-control-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .video-control-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: scale(1.1);
+        }
+        
+        .video-control-btn i {
+            font-size: 1.2rem;
+        }
+        
+        /* Fallback for when video doesn't load */
+        .hero-fallback {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 0;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #667eea;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+        }
+        
+        .btn-primary:hover {
+            background: transparent;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: white;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: #f7fafc;
+        }
+        
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .section-header p {
+            font-size: 1.1rem;
+            color: #718096;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.15);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+        
+        .feature-card p {
+            color: #718096;
+            line-height: 1.6;
+        }
+        
+        .products {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .product-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 5rem;
+            padding: 2rem 0;
+        }
+        
+        .product-row:last-child {
+            margin-bottom: 2rem;
+        }
+        
+        .product-row.reverse {
+            direction: rtl;
+        }
+        
+        .product-row.reverse > * {
+            direction: ltr;
+        }
+        
+        .product-image-container {
+            width: 100%;
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .product-image-container:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.25);
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            transition: all 0.3s ease;
+        }
+        
+        .product-image-container:hover .product-image::before {
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+        }
+        
+        .product-promotional {
+            background-image: url('https://images.unsplash.com/photo-1556906781-9a412961c28c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+        }
+        
+        .product-homeware {
+            background-image: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+        }
+        
+        .product-wovens {
+            background-image: url('https://images.unsplash.com/photo-1558021212-51b6ecfa0db9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+        }
+        
+        .product-knits {
+            background-image: url('https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+        }
+        
+        .product-poly-spandex {
+            background-image: url('https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+        }
+        
+        .product-mesh {
+            background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+        }
+        
+        .product-content {
+            padding: 2rem;
+        }
+        
+        .product-content h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #2d3748;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .product-content p {
+            color: #4a5568;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .product-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #667eea;
+            font-weight: 600;
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #667eea;
+            border-radius: 50px;
+        }
+        
+        .product-link:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .product-link i {
+            transition: transform 0.3s ease;
+        }
+        
+        .product-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Applications Section */
+        .gallery {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        }
+        
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 320px;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
+        }
+        
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 100%);
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover::before {
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%);
+        }
+        
+        .gallery-1 {
+            background-image: url('https://images.unsplash.com/photo-1556906781-9a412961c28c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+        }
+        
+        .gallery-2 {
+            background-image: url('https://images.unsplash.com/photo-1445991842772-097fea258e7b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+        }
+        
+        .gallery-3 {
+            background-image: url('https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+        }
+        
+        .gallery-4 {
+            background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+        }
+        
+        .gallery-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: white;
+            z-index: 3;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-icon {
+            opacity: 1;
+        }
+        
+        .gallery-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            z-index: 4;
+            color: white;
+        }
+        
+        .gallery-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+        
+        .gallery-content p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            opacity: 0.95;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+        }
+        
+        /* Application Modal */
+        .application-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .application-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .application-modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 1000px;
+            width: 100%;
+            position: relative;
+            animation: slideUp 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .application-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #4a5568;
+            transition: all 0.3s ease;
+            z-index: 10;
+            font-weight: 300;
+            font-family: Arial, sans-serif;
+        }
+        
+        .application-modal-close::before {
+            content: '×';
+            font-size: 2rem;
+            line-height: 1;
+        }
+        
+        .application-modal-close:hover {
+            background: #667eea;
+            color: white;
+            transform: rotate(90deg);
+        }
+        
+        .application-modal-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2.5rem 2rem;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .application-modal-header h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+        }
+        
+        .application-modal-header p {
+            font-size: 1.05rem;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+        
+        .application-modal-body {
+            padding: 2.5rem;
+        }
+        
+        .application-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .application-gallery-item {
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+        
+        .application-gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+        
+        .application-gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.3) 100%);
+        }
+        
+        .application-info {
+            background: #f7fafc;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+        
+        .application-info h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 1rem;
+        }
+        
+        .application-info ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .application-info li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #4a5568;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .application-info li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #667eea;
+        }
+        
+        /* About Us Section */
+        .about {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .about-intro {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 4rem;
+        }
+        
+        .about-intro h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .about-intro .subtitle {
+            font-size: 1.3rem;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+        
+        .about-text p {
+            color: #4a5568;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-text p.welcome {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-top: 2rem;
+            line-height: 1.6;
+        }
+        
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .about-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .about-image {
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            background-size: cover;
+            background-position: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
+            transition: all 0.3s ease;
+        }
+        
+        .about-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.25);
+        }
+        
+        .about-image:hover::before {
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+        }
+        
+        .about-overlay-card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            width: 75%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .about-overlay-card i {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .about-overlay-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+        
+        .about-image-1 {
+            background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+        }
+        
+        .about-image-2 {
+            background-image: url('https://images.unsplash.com/photo-1604328698692-f76ea9498e76?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+        }
+        
+        .about-image-3 {
+            background-image: url('https://images.unsplash.com/photo-1562784020-e2c9638b0127?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+        }
+        
+        .about-image-4 {
+            background-image: url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');
+        }
+        
+        .about-tagline {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2d3748;
+            padding: 3rem;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-tagline span {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .contact {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 100px 0;
+        }
+        
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        
+        .contact-info h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #2d3748;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
+            color: #667eea;
+            margin-right: 1rem;
+            width: 30px;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1a202c;
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .footer-section h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #81e6d9;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: #a0aec0;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: #81e6d9;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid #2d3748;
+            color: #718096;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #4a5568;
+            cursor: pointer;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .product-row {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .product-row.reverse {
+                direction: ltr;
+            }
+            
+            .product-image-container {
+                height: 300px;
+            }
+            
+            .product-content {
+                padding: 1rem 0;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .about-images {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-tagline {
+                font-size: 1.3rem;
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="lagoona-logo.png" alt="Lagoona Textiles Logo" onerror="this.style.display='none';">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#applications">Applications</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="cta-button">Get Quote</a>
+            <button class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Video Background -->
+    <section class="hero" id="home">
+        <!-- Fallback background -->
+        <div class="hero-fallback"></div>
+        
+        <!-- Video Background -->
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="textile-hero.mp4" type="video/mp4">
+            <source src="textile-hero.webm" type="video/webm">
+            <!-- Fallback message -->
+            Your browser does not support the video tag.
+        </video>
+        
+        <!-- Video Overlay -->
+        <div class="hero-overlay"></div>
+        
+        <!-- Video Controls -->
+        <div class="video-controls">
+            <button class="video-control-btn" id="playPauseBtn" title="Play/Pause">
+                <i class="fas fa-pause"></i>
+            </button>
+            <button class="video-control-btn" id="muteBtn" title="Mute/Unmute">
+                <i class="fas fa-volume-up"></i>
+            </button>
+        </div>
+        
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Premium Textile Solutions Since 1990</h1>
+                <p>Leading specialist importer and distributor of high-quality textiles for printing, clothing, and sportswear industries across Southern Africa.</p>
+                <div class="hero-buttons">
+                    <a href="products.html" class="btn-primary">Explore Products</a>
+                    <a href="#contact" class="btn-secondary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="services">
+        <div class="features-container">
+            <div class="section-header">
+                <h2>Why Choose Lagoona Textiles</h2>
+                <p>Over three decades of excellence in textile distribution, serving the Southern African market with reliability and quality.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Premium Quality</h3>
+                    <p>Carefully selected and tested textiles that meet our rigorous quality standards for durability and performance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Reliable Distribution</h3>
+                    <p>Warehouses in Cape Town and Gauteng with deliveries to South Africa, Namibia, and Botswana.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Trusted Partnership</h3>
+                    <p>Building long-term relationships with manufacturers through excellent service and competitive pricing.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3>Custom Solutions</h3>
+                    <p>Specialized sourcing capabilities to meet unique fabric requirements quickly and efficiently.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Innovative Textiles</h3>
+                    <p>Developing new and innovative fabrics with our suppliers to offer exciting textile ranges.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Market Leader</h3>
+                    <p>Established market leadership in wholesale supply of textiles to the manufacturing industry.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="products-container">
+            <div class="section-header">
+                <h2>Our Product Range</h2>
+                <p>Comprehensive selection of textiles for various industries including sportswear, schoolwear, promotional, and corporate wear.</p>
+            </div>
+            
+            <!-- Promotional Media -->
+            <div class="product-row">
+                <div class="product-image-container">
+                    <div class="product-image product-promotional"></div>
+                </div>
+                <div class="product-content">
+                    <h3>Promotional Media</h3>
+                    <p>Specialized fabrics for promotional products, branded merchandise, and marketing materials with excellent print reception. Our promotional media textiles are ideal for dye sublimation printing, offering superior color vibrancy and durability for flags, banners, gazebos, and custom promotional items.</p>
+                    <a href="products.html#promotional" class="product-link">
+                        View Products <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Homeware -->
+            <div class="product-row reverse">
+                <div class="product-image-container">
+                    <div class="product-image product-homeware"></div>
+                </div>
+                <div class="product-content">
+                    <h3>Homeware</h3>
+                    <p>Premium textiles for home furnishings, upholstery, curtains, and decorative applications with superior durability. Our homeware collection features luxurious textures including chenille, linen weaves, and natural weaves, perfect for creating elegant and long-lasting home décor solutions.</p>
+                    <a href="products.html#homeware" class="product-link">
+                        View Products <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Wovens -->
+            <div class="product-row">
+                <div class="product-image-container">
+                    <div class="product-image product-wovens"></div>
+                </div>
+                <div class="product-content">
+                    <h3>Wovens</h3>
+                    <p>Traditional woven fabrics for formal wear, uniforms, and structured garments with superior stability and drape. Our woven collection includes microfiber, stretch wovens, and ripstop fabrics, offering excellent durability, water repellency, and comfort for activewear and professional applications.</p>
+                    <a href="products.html#wovens" class="product-link">
+                        View Products <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Knits -->
+            <div class="product-row reverse">
+                <div class="product-image-container">
+                    <div class="product-image product-knits"></div>
+                </div>
+                <div class="product-content">
+                    <h3>Knits</h3>
+                    <p>Versatile knitted fabrics for casual wear, undergarments, and comfort clothing with excellent stretch and recovery. Our extensive knit range includes performance fabrics, polar fleece, soft shells, and moisture-wicking materials ideal for sportswear, outdoor gear, and everyday apparel.</p>
+                    <a href="products.html#knits" class="product-link">
+                        View Products <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Poly Spandex -->
+            <div class="product-row">
+                <div class="product-image-container">
+                    <div class="product-image product-poly-spandex"></div>
+                </div>
+                <div class="product-content">
+                    <h3>Knits - Poly Spandex</h3>
+                    <p>High-performance stretch knit fabrics combining polyester and spandex for activewear and athletic applications. Featuring 4-way stretch, moisture management, and superior compression properties, these fabrics are perfect for sportswear, yoga wear, and performance athletic apparel.</p>
+                    <a href="products.html#poly-spandex" class="product-link">
+                        View Products <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Mesh / Linings -->
+            <div class="product-row reverse">
+                <div class="product-image-container">
+                    <div class="product-image product-mesh"></div>
+                </div>
+                <div class="product-content">
+                    <h3>Mesh / Linings</h3>
+                    <p>Breathable mesh fabrics and premium linings for sportswear, outerwear, and garment construction applications. Our lightweight mesh textiles offer excellent ventilation and moisture management, making them ideal for athletic jerseys, sportswear linings, and breathable performance garments.</p>
+                    <a href="products.html#mesh" class="product-link">
+                        View Products <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="products.html" style="display: inline-block; padding: 1.2rem 3rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 25px rgba(102, 126, 234, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.3)'">
+                    Browse Full Product Catalog →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Applications Section -->
+    <section class="gallery" id="applications">
+        <div class="gallery-container">
+            <div class="section-header">
+                <h2>Textile Applications</h2>
+                <p>Our premium textiles are trusted across diverse industries. Discover how our fabrics enhance performance, comfort, and style in every application.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-application="sportswear" style="background-image: url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                    <div class="gallery-content">
+                        <h3>Sportswear</h3>
+                        <p>High-performance fabrics with moisture management and stretch for professional athletic apparel and team uniforms.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-application="activewear" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                    <div class="gallery-content">
+                        <h3>Activewear</h3>
+                        <p>Advanced poly-spandex blends with 4-way stretch and compression for yoga, fitness, and training wear.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-application="leisurewear" style="background-image: url('https://images.unsplash.com/photo-1490367532201-b9bc1dc483f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                    <div class="gallery-content">
+                        <h3>Leisurewear</h3>
+                        <p>Comfortable knits and soft shells perfect for casual wear, outdoor activities, and everyday comfort.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-application="schoolwear" style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                    <div class="gallery-content">
+                        <h3>School Wear</h3>
+                        <p>Durable, easy-care fabrics designed for school uniforms, sports kits, and educational institution apparel.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-application="corporate" style="background-image: url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                    <div class="gallery-content">
+                        <h3>Corporate Wear</h3>
+                        <p>Professional woven fabrics and microfiber textiles for business attire, branded uniforms, and workwear.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-application="promotional" style="background-image: url('https://images.unsplash.com/photo-1556906781-9a412961c28c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                    <div class="gallery-content">
+                        <h3>Promotional Wear</h3>
+                        <p>Dye sublimation ready fabrics for custom printed t-shirts, caps, bags, and promotional merchandise.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-application="homeware" style="background-image: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                    <div class="gallery-content">
+                        <h3>Homeware</h3>
+                        <p>Luxurious chenille, linen weaves, and natural textures for cushions, throws, and decorative home textiles.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-application="furnishings" style="background-image: url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                    <div class="gallery-content">
+                        <h3>Soft Furnishings</h3>
+                        <p>Premium upholstery fabrics, curtain materials, and drapery textiles for residential and commercial interiors.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item" data-application="banners" style="background-image: url('https://images.unsplash.com/photo-1533158326339-7f3cf2404354?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                    <div class="gallery-content">
+                        <h3>Banners, Flags & Gazebos</h3>
+                        <p>Lightweight warp knit and coated fabrics optimized for dye sublimation printing and outdoor durability.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Application Modal -->
+    <div class="application-modal" id="applicationModal">
+        <div class="application-modal-content">
+            <button class="application-modal-close" id="applicationModalClose"></button>
+            <div class="application-modal-header">
+                <h2 id="applicationModalTitle"></h2>
+                <p id="applicationModalDescription"></p>
+            </div>
+            <div class="application-modal-body">
+                <div class="application-gallery" id="applicationGallery"></div>
+                <div class="application-info">
+                    <h4>Recommended Products</h4>
+                    <ul id="applicationProducts"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Us Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-intro">
+                <h2>About Us</h2>
+                <p class="subtitle">A little bit about us and how we can help you...</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Established in 1990, our reputation has been built on reliability, excellent service, loyalty to our customers and continuous development of new, innovative textiles. Our textiles are well known for their quality, durability, and continuity at competitive prices.</p>
+                    
+                    <p>We offer a wide variety of specially imported textiles suitable for the manufacture of products for various industries. Our innovative collection is available in a wide range of colours and includes many products that are suitable for dye sublimation "heat transfer printing".</p>
+                    
+                    <p>Custom textiles, colours or design may also be specially ordered through us on a confirmed order basis. Our buyers can source any special requirements, quickly and efficiently.</p>
+                    
+                    <p class="welcome">Where your creativity and design meet our innovation.</p>
+                </div>
+                
+                <div class="about-images">
+                    <div class="about-image about-image-1">
+                        <div class="about-overlay-card">
+                            <i class="fas fa-history"></i>
+                            <h4>35+ Years of Expertise</h4>
+                        </div>
+                    </div>
+                    <div class="about-image about-image-2">
+                        <div class="about-overlay-card">
+                            <i class="fas fa-warehouse"></i>
+                            <h4>Extensive Stock Range</h4>
+                        </div>
+                    </div>
+                    <div class="about-image about-image-3">
+                        <div class="about-overlay-card">
+                            <i class="fas fa-shipping-fast"></i>
+                            <h4>Efficient Logistics</h4>
+                        </div>
+                    </div>
+                    <div class="about-image about-image-4">
+                        <div class="about-overlay-card">
+                            <i class="fas fa-handshake"></i>
+                            <h4>Customer-Focused Service</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="about-tagline">
+                <span>Your ideas, our expertise</span> - Endless textile solutions.
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <div class="contact-item" style="align-items: flex-start;">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>Warehouses</strong><br><br>
+                        <strong style="color: #667eea;">Cape Town Head Office</strong><br>
+                        7 Techno Crescent<br>
+                        Western Province Park<br>
+                        Epping Industria<br>
+                        Cape Town, South Africa<br>
+                        <a href="https://maps.app.goo.gl/DSejDXPQzXULv3Gf7" target="_blank" style="color: #667eea; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem;">
+                            <i class="fas fa-map-marked-alt"></i> View on Google Maps
+                        </a>
+                        <br><br>
+                        <strong style="color: #667eea;">Gauteng Branch</strong><br>
+                        Unit 29<br>
+                        Born Free Business Park<br>
+                        89 Main Reef Road<br>
+                        Langlaagte<br>
+                        Gauteng, South Africa<br>
+                        <a href="https://maps.app.goo.gl/cessjpfCiLm6kmGG7" target="_blank" style="color: #667eea; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem;">
+                            <i class="fas fa-map-marked-alt"></i> View on Google Maps
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-item" style="align-items: flex-start;">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <strong>Contact Details</strong><br><br>
+                        <i class="fas fa-phone" style="width: 20px; color: #667eea;"></i> <strong>Tel:</strong> 021 534 1100<br>
+                        <i class="fas fa-fax" style="width: 20px; color: #667eea;"></i> <strong>Fax:</strong> 086 695 4120<br>
+                        <i class="fab fa-whatsapp" style="width: 20px; color: #25D366;"></i> <strong>WhatsApp:</strong> 072 541 6520
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Email</strong><br>
+                        <a href="mailto:sales@lagoonahq.co.za" style="color: #667eea; text-decoration: underline; font-weight: 600;">sales@lagoonahq.co.za</a>
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form">
+                <h3>Request a Quote</h3>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="company">Company Name</label>
+                    <input type="text" id="company" name="company">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message / Requirements</label>
+                    <textarea id="message" name="message" placeholder="Tell us about your textile requirements..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>Lagoona Textiles</h4>
+                <p>Leading specialist importer and distributor of premium textiles since 1990. Serving the Southern African market with excellence.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#home">Home</a>
+                <a href="#products">Products</a>
+                <a href="#services">Services</a>
+                <a href="#about">About Us</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <a href="#">Textile Import</a>
+                <a href="#">Distribution</a>
+                <a href="#">Custom Sourcing</a>
+                <a href="#">Quality Testing</a>
+                <a href="#">Logistics</a>
+            </div>
+            <div class="footer-section">
+                <h4>Product Categories</h4>
+                <a href="#products">Promotional Media</a>
+                <a href="#products">Homeware</a>
+                <a href="#products">Knits - Poly Spandex</a>
+                <a href="#products">Knits</a>
+                <a href="#products">Wovens</a>
+                <a href="#products">Mesh / Linings</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Lagoona Textiles (Pty) Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+               const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Contact form submission with EmailJS
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const company = formData.get('company') || 'Not provided';
+            const message = formData.get('message');
+            
+            // Simple form validation
+            if (!name || !email || !message) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Show sending state
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            // Get current date/time
+            const submissionDate = new Date().toLocaleString('en-ZA', {
+                dateStyle: 'full',
+                timeStyle: 'short'
+            });
+            
+            // Prepare template parameters
+            const templateParams = {
+                name: name,
+                email: email,
+                company: company,
+                message: message,
+                submission_date: submissionDate
+            };
+            
+            // Send email using EmailJS
+            emailjs.send(
+                'service_r7ictax',        // Replace with your Service ID
+                'template_tfkaiyq',       // Replace with your Template ID
+                templateParams
+            )
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                alert('Thank you for your inquiry! We will get back to you soon.');
+                document.querySelector('.contact-form').reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, function(error) {
+                console.log('FAILED...', error);
+                alert('Sorry, there was an error sending your message. Please try again or email us directly at sales@lagoonahq.co.za');
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+        });
+
+        // Mobile menu toggle (placeholder for mobile menu implementation)
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            const navMenu = document.querySelector('.nav-menu');
+            // In a full implementation, this would toggle mobile menu visibility
+            alert('Mobile menu functionality would be implemented here');
+        });
+
+        // Add loading animation for feature cards
+        const featureCards = document.querySelectorAll('.feature-card');
+        const cardObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(30px)';
+                    entry.target.style.transition = 'all 0.6s ease';
+                    
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
+                    
+                    cardObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        featureCards.forEach(card => {
+            cardObserver.observe(card);
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const rate = scrolled * -0.5;
+            
+            if (hero) {
+                hero.style.transform = `translateY(${rate}px)`;
+            }
+        });
+
+        // Form input focus effects
+        document.querySelectorAll('.form-group input, .form-group textarea').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'scale(1.02)';
+                this.parentElement.style.transition = 'transform 0.2s ease';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+
+        // Add typing effect to hero title (runs once on load)
+        window.addEventListener('load', function() {
+            const heroTitle = document.querySelector('.hero-content h1');
+            const originalText = heroTitle.textContent;
+            heroTitle.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    heroTitle.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            }
+            
+            setTimeout(typeWriter, 1000);
+        });
+        
+        // Application Modal Data
+        const applicationData = {
+            sportswear: {
+                title: 'Sportswear',
+                description: 'High-performance fabrics engineered for athletic excellence. Our sportswear textiles deliver superior moisture management, stretch, and durability for team uniforms, jerseys, and professional sports apparel.',
+                images: [
+                    'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1517466787929-bc90951d0974?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1579952363873-27f3bade9f55?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1552196563-55cd4e45efb3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1551958219-acbc608c6377?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+                ],
+                products: [
+                    'Birdseye (BSE) - Classic textured performance fabric',
+                    'Pro Sport (PS) - Ultra-lightweight breathable knit',
+                    'Polyester Spandex (PX) - 4-way stretch with moisture wicking',
+                    'Techno Mesh (TM) - Breathable mesh for jerseys and linings',
+                    'Rugby Knit (RBK) - Durable heavy-duty sports fabric',
+                    'Active Sports Knit (AK) - Lightweight performance material'
+                ]
+            },
+            activewear: {
+                title: 'Activewear',
+                description: 'Advanced performance fabrics designed for fitness and training. Featuring superior stretch, compression, and moisture management properties for yoga wear, gym apparel, and athletic training gear.',
+                images: [
+                    'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1518459031867-a89b944bffe4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1540206063137-4a88ca974d1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+                ],
+                products: [
+                    'Polyester Spandex 320 (PX320) - Maximum stretch with 15% spandex',
+                    'Superior Spandex (SS) - Premium 16% spandex compression fabric',
+                    'Polyester Spandex 240 (PX240) - Medium-weight performance stretch',
+                    'Polyester Spandex Brushed (PXB) - Soft brushed comfort with stretch',
+                    'Poly Twill 4-Way Stretch (PTS) - Structured stretch fabric',
+                    'Triflex (TFW) - Advanced moisture management with stretch'
+                ]
+            },
+            leisurewear: {
+                title: 'Leisurewear',
+                description: 'Comfortable, versatile fabrics perfect for casual wear and outdoor activities. Our leisurewear collection combines softness, durability, and style for everyday comfort and relaxation.',
+                images: [
+                    'https://images.unsplash.com/photo-1490367532201-b9bc1dc483f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+                ],
+                products: [
+                    'Polar Fleece Micro (PFM) - Soft anti-pill fleece for comfort',
+                    'Flannel Fleece (FF230) - Brushed warmth for casual wear',
+                    'Soft Shell Active (SSH-Active) - Breathable outdoor fabric',
+                    'Thermal Active Stretch (TAS) - Winter comfort with stretch',
+                    'Polyester Spandex Brushed (PXB) - Comfortable casual stretch',
+                    'Starlite (STL) - Lightweight everyday knit'
+                ]
+            },
+            schoolwear: {
+                title: 'School Wear',
+                description: 'Durable, easy-care fabrics specifically designed for educational institutions. Our school wear textiles withstand daily wear while maintaining color vibrancy and professional appearance.',
+                images: [
+                    'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1581726707445-75cbe4efc586?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1599643477877-530eb83abc8e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+                ],
+                products: [
+                    'Rugby Knit (RBK) - Heavy-duty sports uniform fabric',
+                    'Birdseye (BSE) - Durable textured knit for PE kits',
+                    'Woven Stretch (WS) - Professional school uniform fabric',
+                    'Microfiber (MF) - Easy-care peach skin finish',
+                    'Pro Sport (PS) - Lightweight sports kit material',
+                    'Polyester Spandex (PX) - Comfortable stretch for uniforms'
+                ]
+            },
+            corporate: {
+                title: 'Corporate Wear',
+                description: 'Professional textiles for business attire and branded workwear. Our corporate fabrics offer refined appearance, durability, and comfort for uniforms, business clothing, and professional environments.',
+                images: [
+                    'https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1520333789090-1afc82db536a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1553028826-f4804a6dba3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+                ],
+                products: [
+                    'Woven Stretch (WS) - Professional stretch fabric for suits',
+                    'Woven Stretch 200 (WS200) - Heavy-duty corporate fabric',
+                    'Microfiber (MF) - Smooth peach skin business fabric',
+                    'Micro Active Superior (MA) - Water-repellent professional fabric',
+                    'Poly Twill 4-Way Stretch (PTS) - Structured corporate stretch',
+                    'Triacetate Matte (TAM) - Elegant matte finish fabric'
+                ]
+            },
+            promotional: {
+                title: 'Promotional Wear',
+                description: 'Sublimation-ready fabrics perfect for custom branded merchandise. Our promotional textiles deliver vibrant color reproduction and durability for printed t-shirts, caps, bags, and marketing materials.',
+                images: [
+                    'https://images.unsplash.com/photo-1556906781-9a412961c28c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1622445275463-afa2ab738c34?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+                ],
+                products: [
+                    'Ready Made Buff (BUFF) - Pre-made sublimation ready buffs',
+                    'Prolite (PRO) - Lightweight sublimation fabric',
+                    'Birdseye (BSE) - Textured promotional knit',
+                    'Sports Sheen (SSN) - Sheen finish promotional fabric',
+                    'Active Sports Knit (AK) - Performance promotional material',
+                    'Techno Sheen (TS) - Advanced moisture management with sheen'
+                ]
+            },
+            homeware: {
+                title: 'Homeware',
+                description: 'Luxurious textiles for decorative home applications. Our homeware collection features premium textures and finishes perfect for cushions, throws, and stylish home décor projects.',
+                images: [
+                    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1556228578-0d85b1a4d571?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1540574163026-643ea20ade25?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+                ],
+                products: [
+                    'Chenille Sheen (CHS) - Luxurious chenille texture',
+                    'Poly Linen Weave (PLW) - Natural linen-look texture',
+                    'Poly Natural Weave (PNW) - Organic weave appearance',
+                    'Tweed Weave (TWD) - Classic tweed pattern',
+                    'Polar Fleece Filament (PFF) - Soft decorative fleece',
+                    'Flannel Fleece (FF230) - Warm brushed homeware fabric'
+                ]
+            },
+            furnishings: {
+                title: 'Soft Furnishings',
+                description: 'Premium upholstery and drapery fabrics for interior design. Our soft furnishing textiles combine durability with elegant aesthetics for curtains, upholstery, and commercial interior applications.',
+                images: [
+                    'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1542435503-956c469947f6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1588471980726-8346cb477a33?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+                ],
+                products: [
+                    'Poly Natural Weave (PNW) - Heavy-duty upholstery fabric',
+                    'Chenille Sheen (CHS) - Luxurious upholstery chenille',
+                    'Tweed Weave (TWD) - Sophisticated tweed upholstery',
+                    'Poly Linen Weave (PLW) - Elegant curtain material',
+                    'Satin Weave (STNW) - Smooth drapery fabric',
+                    'Polar Fleece Filament (PFF) - Soft furnishing fleece'
+                ]
+            },
+            banners: {
+                title: 'Banners, Flags & Gazebos',
+                description: 'Specialized fabrics optimized for large format dye sublimation printing. Our banner and flag textiles deliver exceptional print quality, color vibrancy, and outdoor durability for marketing displays.',
+                images: [
+                    'https://images.unsplash.com/photo-1533158326339-7f3cf2404354?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1556906781-9a412961c28c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1505916349660-8d91a99c3e23?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1557425493-6f90ae4659fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+                    'https://images.unsplash.com/photo-1523575166472-a83a0ed1d522?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+                ],
+                products: [
+                    'Warp Knit (WPK16) - Lightweight flag and banner fabric',
+                    'Warp Knit Direct (WPK16D) - Optimized for direct printing',
+                    'Coated Gazebo (C150/C250) - Durable coated outdoor fabric',
+                    'Coated Gazebo Heavy (GZ15C) - Heavy-duty 240gsm gazebo',
+                    'Polyester Twill (PTW15) - Premium banner material',
+                    'Poly Taffeta Ripstop (PTR) - Tear-resistant flag fabric'
+                ]
+            }
+        };
+        
+        // Application Modal Functions
+        function openApplicationModal(applicationType) {
+            const data = applicationData[applicationType];
+            if (!data) return;
+            
+            const modal = document.getElementById('applicationModal');
+            const modalTitle = document.getElementById('applicationModalTitle');
+            const modalDescription = document.getElementById('applicationModalDescription');
+            const galleryContainer = document.getElementById('applicationGallery');
+            const productsContainer = document.getElementById('applicationProducts');
+            
+            // Set title and description
+            modalTitle.textContent = data.title;
+            modalDescription.textContent = data.description;
+            
+            // Populate gallery
+            galleryContainer.innerHTML = '';
+            data.images.forEach(imageUrl => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'application-gallery-item';
+                galleryItem.style.backgroundImage = `url('${imageUrl}')`;
+                galleryContainer.appendChild(galleryItem);
+            });
+            
+            // Populate products
+            productsContainer.innerHTML = '';
+            data.products.forEach(product => {
+                const li = document.createElement('li');
+                li.textContent = product;
+                productsContainer.appendChild(li);
+            });
+            
+            // Show modal
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeApplicationModal() {
+            const modal = document.getElementById('applicationModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Add click handlers to application cards
+        document.querySelectorAll('.gallery-item[data-application]').forEach(item => {
+            item.addEventListener('click', function() {
+                const applicationType = this.dataset.application;
+                openApplicationModal(applicationType);
+            });
+        });
+        
+        // Modal close handlers
+        document.getElementById('applicationModalClose').addEventListener('click', closeApplicationModal);
+        document.getElementById('applicationModal').addEventListener('click', function(e) {
+            if (e.target === this) closeApplicationModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeApplicationModal();
+        });
+    </script>
+</body>
+</html>
