@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog | Lagoona Textiles</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #fff;
+            border-bottom: 1px solid #e5e5e5;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 0.5rem;
+            z-index: 1001;
+        }
+        
+        .logo img {
+            height: 100px;
+            width: 260px;
+            display: block;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #333;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-size: 0.95rem;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-menu a:hover {
+            color: #555;
+        }
+        
+        .nav-menu .cta-button {
+            display: none;
+        }
+        
+        .cta-button {
+            background: #333;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            min-width: 44px;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .cta-button:hover {
+            background: #555;
+            transform: none;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #333;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 0.5rem;
+            min-width: 44px;
+            min-height: 44px;
+        }
+        
+        .mobile-menu-toggle:active {
+            transform: scale(0.95);
+        }
+        
+        .page-header {
+            background: #fafafa;
+            color: #333;
+            padding: 130px 0 50px;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 400;
+            margin-bottom: 1rem;
+            font-family: 'Georgia', 'Times New Roman', serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #333;
+        }
+        
+        .page-header p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: #555;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .product-catalog {
+            padding: 80px 0;
+            background: #fafafa;
+            min-height: 100vh;
+        }
+        
+        .catalog-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .catalog-categories {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+            justify-content: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-btn {
+            padding: 1rem 2rem;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 0px;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .category-btn:hover,
+        .category-btn.active {
+            background: #555;
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        
+        .catalog-item {
+            background: white;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .catalog-item:hover {
+            transform: translateY(-5px);
+            border-color: #555;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .catalog-item-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3.5rem;
+            position: relative;
+            overflow: hidden;
+            background-color: #fafafa;
+        }
+        
+        .catalog-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .catalog-item-image.no-image {
+            background: #555;
+        }
+        
+        .catalog-item-content {
+            padding: 2rem;
+        }
+        
+        .item-ref {
+            font-size: clamp(0.8rem, 1.5vw, 0.85rem);
+            font-weight: 700;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .item-title {
+            font-size: clamp(1.2rem, 2vw, 1.4rem);
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .view-details-btn {
+            margin-top: 1.5rem;
+            padding: 1rem 2rem;
+            background: #555;
+            color: white;
+            border: none;
+            border-radius: 0px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            min-height: 44px;
+        }
+        
+        .view-details-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 9999;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .product-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 4px;
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+            animation: slideUp 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ddd;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #333;
+            transition: all 0.3s ease;
+            z-index: 10;
+            font-weight: 300;
+            font-family: Arial, sans-serif;
+            min-width: 44px;
+            min-height: 44px;
+        }
+        
+        .modal-close::before {
+            content: '×';
+            font-size: 2rem;
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            background: #333;
+            color: white;
+        }
+        
+        .modal-close:hover::before {
+            transform: rotate(90deg);
+        }
+        
+        .modal-header {
+            background: #7e7e7e;
+            color: white;
+            padding: 2.5rem 2.5rem 1.5rem;
+        }
+        
+        .modal-product-image {
+            width: 100%;
+            height: 350px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        .modal-product-image.no-image {
+            background: #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-product-image.no-image i {
+            font-size: 5rem;
+            color: white;
+            opacity: 0.8;
+        }
+        
+        .modal-header h2 {
+            font-size: clamp(1.3rem, 2.5vw, 1.5rem);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: #fff;
+        }
+        
+        .modal-header .product-ref {
+            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+            opacity: 0.9;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        
+        .modal-body {
+            padding: 2rem;
+        }
+        
+        .product-spec-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .spec-item {
+            background: #fafafa;
+            padding: 1.25rem;
+            border-radius: 12px;
+            border-left: 4px solid #555;
+        }
+        
+        .spec-label {
+            font-size: clamp(0.75rem, 1.5vw, 0.8rem);
+            font-weight: 700;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+        
+        .spec-value {
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .full-width-spec {
+            grid-column: 1 / -1;
+        }
+        
+        .color-options {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: #fafafa;
+            border-radius: 12px;
+        }
+        
+        .color-options h4 {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .color-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        
+        .color-chip {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.75rem 1.25rem;
+            background: white;
+            border-radius: 4px;
+            border: 2px solid #e2e8f0;
+            font-weight: 600;
+            color: #333;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+        }
+        
+        .color-dot {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 1px solid #cbd5e0;
+            /* box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); */
+            flex-shrink: 0;
+        }
+        
+        .highlights {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: #f9f9f9;
+            color: #333;
+            border-radius: 12px;
+        }
+        
+        .highlights h4 {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .highlights ul {
+            list-style: none;
+        }
+        
+        .highlights li {
+            padding: 0.5rem 0;
+            padding-left: 1.75rem;
+            position: relative;
+            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+        }
+        
+        .highlights li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.3rem;
+            color: #667eea;
+        }
+        
+        .note-section {
+            margin-top: 1.5rem;
+            padding: 1.25rem;
+            background: #f9f9f9;
+            border-left: 4px solid #555;
+            border-radius: 10px;
+            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+        }
+        
+        .note-section strong {
+            color: #333;
+            font-weight: 700;
+        }
+        
+        .footer {
+            background: #1a202c;
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        
+        .footer p {
+            color: #a0aec0;
+            font-size: clamp(0.85rem, 1.5vw, 0.95rem);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .catalog-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 968px) {
+            .catalog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding: 100px 2rem 2rem;
+                gap: 1rem;
+                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+                z-index: 999;
+                overflow-y: auto;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-menu li {
+                width: 100%;
+            }
+            
+            .nav-menu a {
+                display: block;
+                padding: 1rem;
+                font-size: 1.1rem;
+                border-bottom: 1px solid #e2e8f0;
+            }
+            
+            .nav-menu .cta-button {
+                display: block;
+                text-align: center;
+                margin-top: 1rem;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .cta-button {
+            background: #333;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            min-width: 44px;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+            
+            .nav-menu .cta-button {
+            background: #333;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            min-width: 44px;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+            
+            .logo img {
+                height: 60px;
+                width: 156px;
+            }
+            
+            .page-header {
+                padding: 100px 0 40px;
+            }
+            
+            .product-catalog {
+                padding: 60px 0;
+            }
+            
+            .catalog-categories {
+                padding: 1.5rem;
+                gap: 0.75rem;
+            }
+            
+            .category-btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.85rem;
+            }
+            
+            .catalog-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .product-spec-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-product-image {
+                height: 250px;
+            }
+            
+            .product-modal.active {
+                padding: 1rem;
+            }
+            
+            .modal-content {
+                max-height: 95vh;
+            }
+            
+            .modal-header {
+                padding: 2rem 1.5rem 1.5rem;
+            }
+            
+            .modal-body {
+                padding: 1.5rem;
+            }
+            
+            .modal-close {
+                top: 10px;
+                right: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+            
+            .catalog-container {
+                padding: 0 1rem;
+            }
+            
+            .catalog-categories {
+                padding: 1rem;
+            }
+            
+            .category-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.8rem;
+            }
+            
+            .catalog-item-content {
+                padding: 1.5rem;
+            }
+            
+            .color-chip {
+                padding: 0.6rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/lagoona-logo.png" alt="Lagoona Textiles Logo" onerror="this.style.display='none';">
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="giving-back.html">Giving Back</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html#contact" class="cta-button">Get Quote</a></li>
+            </ul>
+            <a href="index.html#contact" class="cta-button">Get Quote</a>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars" id="menuIcon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Product Catalog</h1>
+        <p>Browse our comprehensive range of premium textile products. Click on any product to view detailed specifications and ordering information.</p>
+    </section>
+
+    <section class="product-catalog">
+        <div class="catalog-container">
+            <div class="catalog-categories">
+                <button class="category-btn active" data-category="all">All Products</button>
+                <button class="category-btn" data-category="promotional">Promotional Media</button>
+                <button class="category-btn" data-category="homeware">Homeware</button>
+                <button class="category-btn" data-category="poly-spandex">Knits - Poly Spandex</button>
+                <button class="category-btn" data-category="knits">Knits</button>
+                <button class="category-btn" data-category="wovens">Wovens</button>
+                <button class="category-btn" data-category="mesh">Mesh / Linings</button>
+            </div>
+            
+            <div class="catalog-grid" id="catalogGrid"></div>
+        </div>
+    </section>
+
+    <div class="product-modal" id="productModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose"></button>
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <div class="product-ref" id="modalRef"></div>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2025 Lagoona Textiles (Pty) Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        
+        mobileMenuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            
+            // Change icon
+            if (navMenu.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    navMenu.classList.remove('active');
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!navMenu.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+                navMenu.classList.remove('active');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+        
+        // Complete product database - all 47 products
+        const productDatabase = {
+            // Promotional Media (6 products)
+            buff: { ref: 'BUFF', title: 'Ready Made Buff', category: 'promotional', image: 'images/products/buff-product.jpg', icon: 'bullhorn',
+                specs: { composition: '100% Spun Polyester', weight: '130gm²', size: '25cm (width) x 53cm (length) - Tubular', note: 'Ready Made / PFP / Moq = 25 units' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }],
+                highlights: ['Ideal for Dye Sublimation Printing', 'Ready Made - No minimum order delays', 'Perfect for promotional and branding applications', 'High-quality tubular construction', 'PFP (Prepared for Printing) finish'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            'c150-c250': { ref: 'C150 / C250', title: 'Coated Gazebo', category: 'promotional', image: 'images/products/c150-c250-product.jpg', icon: 'bullhorn',
+                specs: { composition: '100% Polyester', weight: '170gm²', width: '150cm AND 250cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }],
+                highlights: ['Ideal for Dye Sublimation Printing', 'Available in two widths: 150cm and 250cm', 'Durable coated finish', 'Perfect for gazebo and outdoor applications', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            gz15c: { ref: 'GZ15C', title: 'Coated Gazebo', category: 'promotional', image: 'images/products/gz15c-product.jpg', icon: 'bullhorn',
+                specs: { composition: '100% Polyester', weight: '240gm²', width: '150cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }],
+                highlights: ['Ideal for Dye Sublimation Printing', 'Heavy-duty 240gm² weight', 'Superior durability for outdoor use', 'Professional gazebo applications', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            ptw15: { ref: 'PTW15', title: 'Polyester Twill', category: 'promotional', image: 'images/products/ptw15-product.jpg', icon: 'bullhorn',
+                specs: { composition: '100% Polyester', weight: '220gm²', width: '150cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }],
+                highlights: ['Ideal for Dye Sublimation Printing', 'Premium twill weave construction', 'Excellent print quality and color vibrancy', 'Versatile for various promotional applications', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            wpk16: { ref: 'WPK16', title: 'Warp Knit', category: 'promotional', image: 'images/products/wpk16-product.jpg', icon: 'bullhorn',
+                specs: { composition: '100% Polyester', weight: '110gm²', width: '160cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }],
+                highlights: ['Ideal for Dye Sublimation Printing', 'Lightweight 110gm² construction', 'Excellent drape and flexibility', 'Perfect for flags, banners, and displays', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            wpk16d: { ref: 'WPK16D', title: 'Warp Knit - Direct', category: 'promotional', image: 'images/products/wpk16d-product.jpg', icon: 'bullhorn',
+                specs: { composition: '100% Polyester', weight: '110gm²', width: '160cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }],
+                highlights: ['Ideal for Dye Sublimation Direct Printing', 'Optimized for direct printing processes', 'Lightweight 110gm² construction', 'Superior ink absorption and color reproduction', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            
+            // Homeware (4 products)
+            chs: { ref: 'CHS', title: 'Chenille Sheen', category: 'homeware', image: 'https://www.urquidlinen.com/cdn/shop/files/White3_1d1d6018-904e-4c6e-bf7e-0b6157c099a9.jpg', icon: 'home',
+                specs: { composition: '100% Polyester', weight: '310gm²', width: '150cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }],
+                highlights: ['Ideal for Dye Sublimation Printing', 'Luxurious chenille texture with sheen finish', 'Heavy-duty 310gm² weight', 'Perfect for premium home furnishings', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            plw: { ref: 'PLW', title: 'Poly Linen Weave', category: 'homeware', image: 'https://cdn11.bigcommerce.com/s-z9t2ne/images/stencil/1280x1280/products/55726/499997/fdc0123-misc-1001__10922.1700177830.jpg?fit=scale-down', icon: 'home',
+                specs: { composition: '100% Polyester', weight: '200gm²', width: '150cm', coreSize: '76mm' },
+                colors: [{ code: '005', name: 'Linen', hex: '#F5F1E8' }],
+                colorNote: 'Colours are an indication only',
+                highlights: ['Ideal for Dye Sublimation Printing', 'Natural linen-look weave texture', 'Versatile 200gm² weight', 'Perfect for curtains and soft furnishings', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            pnw: { ref: 'PNW', title: 'Poly Natural Weave', category: 'homeware', image: 'https://cdn.onlinefabricstore.com/products/MEMWHIT_1.jpg?width=900&fit=scale-down', icon: 'home',
+                specs: { composition: '100% Polyester', weight: '300gm²', width: '150cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }],
+                highlights: ['Ideal for Dye Sublimation Printing', 'Natural weave texture and appearance', 'Heavy-duty 300gm² weight', 'Excellent for upholstery and home decor', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            twd: { ref: 'TWD', title: 'Tweed Weave', category: 'homeware', image: 'https://img.kwcdn.com/product/open/2f06030e0b83454794f3df3f26724174-goods.jpeg?imageView2/2/w/800/q/70/format/webp&fit=scale-down', icon: 'home',
+                specs: { composition: '100% Polyester', weight: '215gm²', width: '150cm', coreSize: '76mm' },
+                colors: [{ code: '500', name: 'Grey', hex: '#808080' }],
+                colorNote: 'Colours are an indication only',
+                highlights: ['Ideal for Dye Sublimation Printing', 'Classic tweed weave pattern', 'Sophisticated grey base color', 'Perfect for upholstery and decorative applications', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            
+            // Knits - Poly Spandex (8 products)
+            px: { ref: 'PX', title: 'Polyester Spandex', category: 'poly-spandex', image: 'images/products/px-product.jpg', icon: 'running',
+                specs: { composition: '95% Polyester + 5% Spandex', weight: '185gm²', width: '152cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }, { code: '100', name: 'Black', hex: '#000000' }, { code: '085', name: 'Midnight Blue', hex: '#191970' }],
+                colorNote: 'Colours are an indication only',
+                highlights: ['Ideal for dye sublimation printing', 'Excellent stretch and recovery (5% Spandex)', 'Lightweight 185gm² construction', 'Perfect for activewear and sportswear', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            px240: { ref: 'PX240', title: 'Polyester Spandex', category: 'poly-spandex', image: 'images/products/px240-product.jpg', icon: 'running',
+                specs: { composition: '95% Polyester + 5% Spandex', weight: '240gm²', width: '152cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }, { code: '100', name: 'Black', hex: '#000000' }],
+                colorNote: 'Colours are an indication only',
+                highlights: ['Ideal for dye sublimation printing', 'Medium-weight 240gm² construction', 'Enhanced durability with 5% Spandex', 'Excellent for athletic apparel', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            px320: { ref: 'PX320', title: 'Polyester Spandex', category: 'poly-spandex', image: 'images/products/px320-product.jpg', icon: 'running',
+                specs: { composition: '85% Polyester + 15% Spandex', weight: '320gm²', width: '150cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }, { code: '100', name: 'Black', hex: '#000000' }, { code: '300', name: 'Navy', hex: '#000080' }, { code: '077A', name: 'Dark Grey', hex: '#505050' }],
+                colorNote: 'Colours are an indication only',
+                highlights: ['Ideal for dye sublimation printing', 'Maximum stretch with 15% Spandex', 'Heavy-duty 320gm² weight', 'Superior compression and support', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            pxb: { ref: 'PXB', title: 'Polyester Spandex Brushed', category: 'poly-spandex', image: 'images/products/pxb-product.jpg', icon: 'running',
+                specs: { composition: '95% Polyester + 5% Spandex', weight: '180gm²', width: '150cm', coreSize: '76mm', finish: 'Brushed' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }, { code: '100', name: 'Black', hex: '#000000' }, { code: '300', name: 'Navy', hex: '#000080' }, { code: '420', name: 'Kelly Green', hex: '#00A86B' }, { code: '500', name: 'Light Grey', hex: '#D3D3D3' }, { code: '032', name: 'Berry', hex: '#B8497D' }, { code: '108', name: 'Teal', hex: '#008080' }, { code: '600', name: 'Red', hex: '#FF0000' }, { code: '067', name: 'Olive', hex: '#808000' }, { code: '046', name: 'Chocolate', hex: '#7B3F00' }],
+                colorNote: 'Colours are an indication only',
+                highlights: ['Ideal for dye sublimation printing', 'Soft brushed finish for comfort', 'Wide color range available', 'Perfect for casual and athletic wear', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            ss: { ref: 'SS', title: 'Superior Spandex', category: 'poly-spandex', image: 'images/products/ss-product.jpg', icon: 'running',
+                specs: { composition: '84% Polyester + 16% Spandex', weight: '230gm²', width: '150cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White Only', hex: '#FFFFFF' }],
+                highlights: ['Ideal for dye sublimation printing', 'Maximum stretch with 16% Spandex', 'Superior recovery and compression', 'Premium quality for performance wear', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            ssb: { ref: 'SSB', title: 'Superior Spandex Brushed', category: 'poly-spandex', image: 'images/products/ssb-product.jpg', icon: 'running',
+                specs: { composition: '84% Polyester + 16% Spandex', weight: '230gm²', width: '150cm', coreSize: '76mm', finish: 'Brushed' },
+                colors: [{ code: '000', name: 'White Only', hex: '#FFFFFF' }],
+                highlights: ['Ideal for dye sublimation printing', 'Soft brushed finish with maximum stretch', '16% Spandex for superior performance', 'Comfortable against skin', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            tas: { ref: 'TAS', title: 'Thermal Active Stretch', category: 'poly-spandex', image: 'images/products/tas-product.jpg', icon: 'running',
+                specs: { composition: '92% Polyester + 8% Spandex', weight: '230gm²', width: '150cm', coreSize: '76mm', finish: 'Brushed One Side' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }, { code: '100', name: 'Black', hex: '#000000' }, { code: '300', name: 'Navy', hex: '#000080' }, { code: '600', name: 'Red', hex: '#FF0000' }, { code: '067', name: 'Olive', hex: '#808000' }, { code: '067', name: 'Charcoal Grey', hex: '#36454F' }],
+                colorNote: 'Colours are an indication only',
+                highlights: ['Ideal for dye sublimation printing', 'Thermal properties for cold weather', 'Brushed one side for warmth and comfort', 'Perfect for winter activewear', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            pts: { ref: 'PTS', title: 'Poly Twill 4-Way Stretch', category: 'poly-spandex', image: 'images/products/pts-product.jpg', icon: 'running',
+                specs: { composition: '96% Polyester + 4% Spandex', weight: '200gm²', width: '150cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }, { code: '100', name: 'Black', hex: '#000000' }, { code: '300', name: 'Navy', hex: '#000080' }],
+                colorNote: 'Colours are an indication only',
+                highlights: ['Ideal for dye sublimation printing', '4-way stretch for maximum mobility', 'Twill weave construction', 'Versatile for sportswear and casual wear', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            
+            // Knits (19 products)
+            ak: { ref: 'AK', title: 'Active Sports Knit', category: 'knits', image: 'images/products/ak-product.jpg', icon: 'tshirt',
+                specs: { composition: '100% Polyester', weight: '135gm²', width: '150cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }],
+                highlights: ['Ideal for Dye Sublimation Printing', 'Lightweight 135gm² construction', 'Perfect for active sports apparel', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            bse: { ref: 'BSE', title: 'Birdseye', category: 'knits', image: 'images/products/bse-product.jpg', icon: 'tshirt',
+                specs: { composition: '100% Polyester', weight: '135gm²', width: '150cm In White, 176cm in Colour', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }, { code: '100', name: 'Black', hex: '#000000' }, { code: '300', name: 'Navy', hex: '#000080' }, { code: '256', name: 'Sky Blue', hex: '#87CEEB' }, { code: '205', name: 'Dark Blue', hex: '#00008B' }, { code: '505', name: 'Grey', hex: '#808080' }, { code: '018', name: 'Orange', hex: '#FFA500' }, { code: '260', name: 'Turquoise', hex: '#40E0D0' }, { code: '600', name: 'Red', hex: '#FF0000' }, { code: '851', name: 'Golden Yellow', hex: '#FFD700' }],
+                colorNote: 'Colours are an indication only',
+                highlights: ['Ideal for Dye Sublimation Printing', 'Classic birdseye texture', 'Wide color range available', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            bsr: { ref: 'BSR', title: 'Birdseye Sports Rib', category: 'knits', image: 'images/products/bsr-product.jpg', icon: 'tshirt',
+                specs: { composition: '100% Polyester', weight: '135gm²', width: '152cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }],
+                highlights: ['Ideal for Dye Sublimation Printing', 'Birdseye pattern with rib structure', 'Enhanced breathability', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            dns: { ref: 'DNS', title: 'Drop Needle Square', category: 'knits', image: 'images/products/dns-product.jpg', icon: 'tshirt',
+                specs: { composition: '92% Micro Polyester + 8% Polyester', weight: '110gm²', width: '150cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }],
+                highlights: ['Ideal for Dye Sublimation Printing', 'Unique drop needle construction', 'Ultra-lightweight 110gm²', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            ff230: { ref: 'FF230', title: 'Flannel Fleece', category: 'knits', image: 'images/products/ff230-product.jpg', icon: 'tshirt',
+                specs: { composition: '100% Polyester', weight: '230gm²', width: '150cm', coreSize: '76mm', finish: 'Brushed both sides' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }],
+                highlights: ['Ideal for Dye Sublimation Printing', 'Soft brushed finish both sides', 'Warm and comfortable', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            pff: { ref: 'PFF', title: 'Polar Fleece Filament', category: 'knits', image: 'images/products/pff-product.jpg', icon: 'tshirt',
+                specs: { composition: '92% Polyester + 8% Spandex', weight: '250gm²', width: '150cm', coreSize: '76mm', finish: 'Brushed both sides + Anti Pill face side' },
+                colors: [{ code: '100', name: 'Black', hex: '#000000' }, { code: '300', name: 'Navy', hex: '#000080' }, { code: '010', name: 'Mushroom', hex: '#C9B99B' }, { code: '067', name: 'Olive', hex: '#808000' }],
+                colorNote: 'Colours are an indication only',
+                highlights: ['Premium polar fleece with stretch', 'Anti-pill finish', 'Perfect for cold weather gear', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            pfm: { ref: 'PFM', title: 'Polar Fleece Micro', category: 'knits', image: 'images/products/pfm-product.jpg', icon: 'tshirt',
+                specs: { composition: '100% Polyester', weight: '200gm²', width: '150cm', coreSize: '76mm', finish: 'Brushed both sides & Anti Pill both sides' },
+                colors: [{ code: '100', name: 'Black', hex: '#000000' }, { code: '300', name: 'Navy', hex: '#000080' }, { code: '069', name: 'Charcoal Grey', hex: '#36454F' }, { code: '077A', name: 'Dark Grey', hex: '#505050' }, { code: '067', name: 'Olive', hex: '#808000' }, { code: '005C', name: 'Stone Grey', hex: '#928E85' }],
+                colorNote: 'Colours are an indication only',
+                highlights: ['Micro fleece construction', 'Anti-pill both sides', 'Soft and durable', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            pro: { ref: 'PRO', title: 'Prolite', category: 'knits', image: 'images/products/pro-product.jpg', icon: 'tshirt',
+                specs: { composition: '100% Polyester', weight: '140gm²', width: '150cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }],
+                highlights: ['Ideal for Dye Sublimation Printing', 'Lightweight performance fabric', 'Excellent moisture management', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            pro185: { ref: 'PRO185', title: 'Prolite', category: 'knits', image: 'images/products/pro185-product.jpg', icon: 'tshirt',
+                specs: { composition: '100% Polyester', weight: '185gm²', width: '150cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }],
+                highlights: ['Ideal for Dye Sublimation Printing', 'Medium-weight performance', 'Enhanced durability', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            ps: { ref: 'PS', title: 'Pro Sport', category: 'knits', image: 'images/products/ps-product.jpg', icon: 'tshirt',
+                specs: { composition: '100% Polyester', weight: '100gm²', width: '150cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }],
+                highlights: ['Ideal for Dye Sublimation Printing', 'Ultra-lightweight 100gm²', 'Maximum breathability', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            ssh: { ref: 'SSH', title: 'Soft Shell', category: 'knits', image: 'images/products/ssh-product.jpg', icon: 'tshirt',
+                specs: { composition: '100% Polyester', weight: '295gm²', width: '147cm', coreSize: '76mm', finish: 'Waterproof (TPU Film)' },
+                colors: [{ code: '100', name: 'Black', hex: '#000000' }, { code: '300', name: 'Navy', hex: '#000080' }, { code: '077A', name: 'Dark Grey', hex: '#505050' }],
+                colorNote: 'Colours are an indication only',
+                highlights: ['Ideal for Dye Sublimation Printing', 'Waterproof TPU film', 'Heavy-duty protection', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            'ssh-active': { ref: 'SSH - Active', title: 'Soft Shell Active', category: 'knits', image: 'images/products/ssh-active-product.jpg', icon: 'tshirt',
+                specs: { composition: '100% Polyester', weight: '265gm²', width: '147cm', coreSize: '76mm', finish: 'Breathable' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }, { code: '100', name: 'Black', hex: '#000000' }, { code: '300', name: 'Navy', hex: '#000080' }, { code: '069', name: 'Charcoal Grey', hex: '#36454F' }, { code: '600', name: 'Red', hex: '#FF0000' }],
+                colorNote: 'Colours are an indication only',
+                highlights: ['Ideal for Dye Sublimation Printing', 'Breathable construction', 'Active performance shell', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            rbk: { ref: 'RBK', title: 'Rugby Knit', category: 'knits', image: 'images/products/rbk-product.jpg', icon: 'tshirt',
+                specs: { composition: '100% Polyester', weight: '200gm²', width: '150cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }],
+                highlights: ['Ideal for Dye Sublimation Printing', 'Durable rugby-weight construction', 'Perfect for team sports', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            ssn: { ref: 'SSN', title: 'Sports Sheen', category: 'knits', image: 'images/products/ssn-product.jpg', icon: 'tshirt',
+                specs: { composition: '100% Polyester', weight: '135gm²', width: '150cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }],
+                highlights: ['Ideal for Dye Sublimation Printing', 'Sheen finish for aesthetics', 'Lightweight sports fabric', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            stl: { ref: 'STL', title: 'Starlite', category: 'knits', image: 'images/products/stl-product.jpg', icon: 'tshirt',
+                specs: { composition: '100% Polyester', weight: '135gm²', width: '150cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }],
+                highlights: ['Ideal for Dye Sublimation Printing', 'Lightweight performance', 'Excellent for activewear', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            ts: { ref: 'TS', title: 'Techno Sheen', category: 'knits', image: 'images/products/ts-product.jpg', icon: 'tshirt',
+                specs: { composition: '100% Polyester', weight: '150gm²', width: '150cm', coreSize: '76mm', finish: 'Moisture Management' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }, { code: '100', name: 'Black', hex: '#000000' }, { code: '300', name: 'Navy', hex: '#000080' }, { code: '202', name: 'Dark Royal Blue', hex: '#002366' }, { code: '256A', name: 'Dark Sky Blue', hex: '#4682B4' }, { code: '400', name: 'Bottle Green', hex: '#006A4E' }, { code: '401', name: 'Emerald Green', hex: '#50C878' }, { code: '018', name: 'Orange', hex: '#FFA500' }],
+                colorNote: 'Colours are an indication only',
+                highlights: ['Ideal for Dye Sublimation Printing', 'Advanced moisture management', 'Techno sheen finish', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            tam: { ref: 'TAM', title: 'Triacetate Matte', category: 'knits', image: 'images/products/tam-product.jpg', icon: 'tshirt',
+                specs: { composition: '100% Polyester', weight: '200gm²', width: '150cm', coreSize: '76mm', finish: 'Brushed one side' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }, { code: '100', name: 'Black', hex: '#000000' }, { code: '300', name: 'Navy', hex: '#000080' }],
+                colorNote: 'Colours are an indication only',
+                highlights: ['Ideal for Dye Sublimation Printing', 'Matte finish with brushed comfort', 'Excellent drape and feel', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            tf2: { ref: 'TF2', title: 'Triflex 2', category: 'knits', image: 'images/products/tf2-product.jpg', icon: 'tshirt',
+                specs: { composition: '100% Polyester', weight: '220gm²', width: '150cm', coreSize: '76mm', finish: 'Moisture Management' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }, { code: '100', name: 'Black', hex: '#000000' }, { code: '300', name: 'Navy', hex: '#000080' }],
+                colorNote: 'Colours are an indication only',
+                highlights: ['Ideal for Dye Sublimation Printing', 'Advanced moisture management', 'Three-way stretch construction', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            tfw: { ref: 'TFW', title: 'Triflex', category: 'knits', image: 'images/products/tfw-product.jpg', icon: 'tshirt',
+                specs: { composition: '100% Polyester', weight: '220gm²', width: '150cm', coreSize: '76mm', finish: 'Moisture Management' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }, { code: '100', name: 'Black', hex: '#000000' }, { code: '300', name: 'Navy', hex: '#000080' }, { code: '600', name: 'Red', hex: '#FF0000' }, { code: '204', name: 'Royal Blue', hex: '#4169E1' }, { code: '402', name: 'Forest Green', hex: '#228B22' }],
+                colorNote: 'Colours are an indication only',
+                highlights: ['Ideal for Dye Sublimation Printing', 'Superior moisture management', 'Flexible three-way stretch', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            
+            // Wovens (9 products)
+            am200: { ref: 'AM200', title: 'Absorbent Microfiber', category: 'wovens', image: 'images/products/am200-product.jpg', icon: 'layer-group',
+                specs: { composition: '85% Polyester + 15% Nylon', weight: '200gm²', width: '150cm', coreSize: '76mm', finish: 'Brushed' },
+                colors: [{ code: '000', name: 'White Only', hex: '#FFFFFF' }],
+                highlights: ['Ideal for Dye Sublimation Printing', 'Highly absorbent microfiber construction', 'Soft brushed finish', 'Perfect for towels and sports applications', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            ma: { ref: 'MA', title: 'Micro Active Superior', category: 'wovens', image: 'images/products/ma-product.jpg', icon: 'layer-group',
+                specs: { composition: '100% Polyester', weight: '80gm²', width: '150cm', coreSize: '76mm', finish: 'Cire & Water Repellent' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }, { code: '100', name: 'Black', hex: '#000000' }, { code: '200', name: 'Dark Royal', hex: '#002366' }, { code: '300', name: 'Dark Navy', hex: '#000033' }, { code: '303', name: 'Navy', hex: '#000080' }, { code: '400', name: 'Bottle Green', hex: '#006A4E' }, { code: '505', name: 'Grey', hex: '#808080' }, { code: '069', name: 'Charcoal Grey', hex: '#36454F' }],
+                colorNote: 'Colours are an indication only',
+                highlights: ['Ideal for Dye Sublimation Printing', 'Ultra-lightweight 80gm²', 'Water repellent finish', 'Cire treatment for smooth surface', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            masj: { ref: 'MASJ', title: 'Micro Active Superior Bonded With Single Jersey', category: 'wovens', image: 'images/products/masj-product.jpg', icon: 'layer-group',
+                specs: { composition: '100% Polyester', weight: '160gm²', width: '147cm', coreSize: '76mm', finish: 'Water Repellent' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }, { code: '100', name: 'Black', hex: '#000000' }, { code: '202', name: 'Dark Blue', hex: '#00008B' }, { code: '256', name: 'Sky Blue', hex: '#87CEEB' }, { code: '300', name: 'Navy', hex: '#000080' }, { code: '400', name: 'Bottle Green', hex: '#006A4E' }, { code: '069', name: 'Charcoal Grey', hex: '#36454F' }, { code: '600', name: 'Red', hex: '#FF0000' }, { code: '851', name: 'Golden Yellow', hex: '#FFD700' }],
+                colorNote: 'Colours are an indication only',
+                highlights: ['Ideal for Dye Sublimation Printing', 'Bonded construction for durability', 'Water repellent finish', 'Versatile for activewear and outerwear', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            mf: { ref: 'MF', title: 'Microfiber', category: 'wovens', image: 'images/products/mf-product.jpg', icon: 'layer-group',
+                specs: { composition: '100% Polyester', weight: '135gm²', width: '150cm', coreSize: '76mm', finish: 'Peach Skin & Water Repellent' },
+                colors: [{ code: '000', name: 'White Only', hex: '#FFFFFF' }],
+                highlights: ['Ideal for Dye Sublimation Printing', 'Soft peach skin finish', 'Water repellent treatment', 'Comfortable next-to-skin feel', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            ptr: { ref: 'PTR', title: 'Poly Taffeta Ripstop', category: 'wovens', image: 'images/products/ptr-product.jpg', icon: 'layer-group',
+                specs: { composition: '100% Polyester', weight: '35gm²', width: '150cm', coreSize: '76mm', finish: 'Cire' },
+                colors: [{ code: '000', name: 'White Only', hex: '#FFFFFF' }],
+                highlights: ['Ideal for Dye Sublimation Printing', 'Ultra-lightweight 35gm² ripstop', 'Cire finish for smoothness', 'Tear-resistant construction', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            stnw: { ref: 'STNW', title: 'Satin Weave', category: 'wovens', image: 'images/products/stnw-product.jpg', icon: 'layer-group',
+                specs: { composition: '100% Polyester', weight: '130gm²', width: '150cm', coreSize: '76mm', finish: 'PFP & Semi Dull' },
+                colors: [{ code: '000', name: 'White Only', hex: '#FFFFFF' }],
+                highlights: ['Ideal for Dye Sublimation Printing', 'Elegant satin weave construction', 'PFP (Prepared for Printing)', 'Semi-dull finish for subtle sheen', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            ws: { ref: 'WS', title: 'Woven Stretch', category: 'wovens', image: 'images/products/ws-product.jpg', icon: 'layer-group',
+                specs: { composition: '95% Polyester + 5% Spandex', weight: '130gm²', width: '150cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }, { code: '100', name: 'Black', hex: '#000000' }, { code: '202', name: 'Dark Blue', hex: '#00008B' }, { code: '256', name: 'Sky Blue', hex: '#87CEEB' }, { code: '400', name: 'Bottle Green', hex: '#006A4E' }, { code: '500', name: 'Light Grey', hex: '#D3D3D3' }, { code: '502', name: 'Dark Grey', hex: '#505050' }, { code: '600', name: 'Red', hex: '#FF0000' }, { code: '038', name: 'Medium Beige', hex: '#D2B48C' }],
+                colorNote: 'Colours are an indication only',
+                highlights: ['Ideal for Dye Sublimation Printing', 'Woven fabric with 5% Spandex stretch', 'Wide color range available', 'Comfortable and flexible', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            ws200: { ref: 'WS200', title: 'Woven Stretch 200', category: 'wovens', image: 'images/products/ws200-product.jpg', icon: 'layer-group',
+                specs: { composition: '95% Polyester + 5% Spandex', weight: '200gm²', width: '150cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White Only', hex: '#FFFFFF' }],
+                highlights: ['Ideal for Dye Sublimation Printing', 'Heavier weight woven stretch', 'Enhanced durability with 5% Spandex', 'Perfect for structured garments', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            wsr: { ref: 'WSR', title: 'Woven Stretch Ripstop', category: 'wovens', image: 'images/products/wsr-product.jpg', icon: 'layer-group',
+                specs: { composition: '95% Polyester + 5% Spandex', weight: '130gm²', width: '150cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }, { code: '100', name: 'Black', hex: '#000000' }, { code: '300', name: 'Navy', hex: '#000080' }],
+                colorNote: 'Colours are an indication only',
+                highlights: ['Ideal for Dye Sublimation Printing', 'Ripstop construction with stretch', 'Tear-resistant and flexible', 'Perfect for outdoor and activewear', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' },
+            
+            // Mesh / Linings (1 product)
+            tm: { ref: 'TM', title: 'Techno Mesh', category: 'mesh', image: 'images/products/tm-product.jpg', icon: 'dot-circle',
+                specs: { composition: '100% Polyester', weight: '115gmÃ‚Â²', width: '150cm', coreSize: '76mm' },
+                colors: [{ code: '000', name: 'White', hex: '#FFFFFF' }, { code: '100', name: 'Black', hex: '#000000' }, { code: '300', name: 'Navy', hex: '#000080' }],
+                colorNote: 'Colours are an indication only',
+                highlights: ['Ideal for Dye Sublimation Printing', 'Lightweight breathable mesh construction', 'Perfect for sportswear and linings', 'Excellent ventilation properties', '76mm core size for easy handling'],
+                careNote: 'Please consult our catalogue for care instructions' }
+        };
+
+        // Load all products into catalog
+        function loadProducts() {
+            const grid = document.getElementById('catalogGrid');
+            grid.innerHTML = '';
+            
+            Object.keys(productDatabase).forEach(key => {
+                const product = productDatabase[key];
+                const card = document.createElement('div');
+                card.className = 'catalog-item';
+                card.dataset.category = product.category;
+                card.dataset.product = key;
+                
+                card.innerHTML = `
+                    <div class="catalog-item-image">
+                        <img src="${product.image}" alt="${product.title}" 
+                             onerror="this.style.display='none'; this.parentElement.classList.add('no-image'); this.parentElement.innerHTML='<i class=\\'fas fa-${product.icon}\\'></i>';">
+                    </div>
+                    <div class="catalog-item-content">
+                        <div class="item-ref">REF: ${product.ref}</div>
+                        <div class="item-title">${product.title}</div>
+                        <button class="view-details-btn">View Full Details</button>
+                    </div>
+                `;
+                
+                card.addEventListener('click', () => openProductModal(key));
+                grid.appendChild(card);
+            });
+        }
+
+        // Open product modal
+        function openProductModal(productKey) {
+            const product = productDatabase[productKey];
+            if (!product) return;
+            
+            const modal = document.getElementById('productModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalRef = document.getElementById('modalRef');
+            const modalBody = document.getElementById('modalBody');
+            
+            modalTitle.textContent = product.title;
+            modalRef.textContent = `REF: ${product.ref}`;
+            
+            // Add product image
+            let imageHTML = '';
+            if (product.image) {
+                imageHTML = `<div class="modal-product-image" style="background-image: url('${product.image}');" 
+                    onError="this.classList.add('no-image'); this.style.backgroundImage='none'; this.innerHTML='<i class=\\'fas fa-${product.icon}\\'></i>';"></div>`;
+            } else {
+                imageHTML = `<div class="modal-product-image no-image"><i class="fas fa-${product.icon}"></i></div>`;
+            }
+            
+            let specsHTML = '<div class="product-spec-grid">';
+            specsHTML += `<div class="spec-item"><div class="spec-label">Composition</div><div class="spec-value">${product.specs.composition}</div></div>`;
+            specsHTML += `<div class="spec-item"><div class="spec-label">Weight ±</div><div class="spec-value">${product.specs.weight}</div></div>`;
+            
+            if (product.specs.width) specsHTML += `<div class="spec-item"><div class="spec-label">Width ±</div><div class="spec-value">${product.specs.width}</div></div>`;
+            if (product.specs.size) specsHTML += `<div class="spec-item full-width-spec"><div class="spec-label">Size</div><div class="spec-value">${product.specs.size}</div></div>`;
+            if (product.specs.coreSize) specsHTML += `<div class="spec-item"><div class="spec-label">Core Size</div><div class="spec-value">${product.specs.coreSize}</div></div>`;
+            if (product.specs.finish) specsHTML += `<div class="spec-item"><div class="spec-label">Finish</div><div class="spec-value">${product.specs.finish}</div></div>`;
+            specsHTML += '</div>';
+            
+            if (product.specs.note) specsHTML += `<div class="note-section"><strong>Note:</strong> ${product.specs.note}</div>`;
+            
+            let colorsHTML = '<div class="color-options"><h4>Colours Available</h4><div class="color-list">';
+            product.colors.forEach(color => {
+                colorsHTML += `<div class="color-chip"><div class="color-dot" style="background-color: ${color.hex}"></div><span>${color.code} - ${color.name}</span></div>`;
+            });
+            colorsHTML += '</div>';
+            if (product.colorNote) colorsHTML += `<p style="margin-top: 1rem; font-size: 0.9rem; color: #666; font-style: italic;">${product.colorNote}</p>`;
+            colorsHTML += '</div>';
+            
+            let highlightsHTML = '<div class="highlights"><h4>Product Highlights</h4><ul>';
+            product.highlights.forEach(highlight => {
+                highlightsHTML += `<li>${highlight}</li>`;
+            });
+            highlightsHTML += '</ul></div>';
+            
+            let careHTML = `<div class="note-section"><strong>Care Instructions:</strong> ${product.careNote}</div>`;
+            
+            modalBody.innerHTML = imageHTML + specsHTML + colorsHTML + highlightsHTML + careHTML;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close modal
+        function closeProductModal() {
+            const modal = document.getElementById('productModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Filter products
+        function filterProducts(category) {
+            const items = document.querySelectorAll('.catalog-item');
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProducts();
+            
+            // Check if there's a hash in the URL and filter accordingly
+            const hash = window.location.hash.substring(1); // Remove the # symbol
+            if (hash) {
+                // Find and click the corresponding category button
+                const categoryButtons = document.querySelectorAll('.category-btn');
+                categoryButtons.forEach(btn => {
+                    if (btn.dataset.category === hash) {
+                        // Remove active class from all buttons
+                        categoryButtons.forEach(b => b.classList.remove('active'));
+                        // Add active class to matching button
+                        btn.classList.add('active');
+                        // Filter to that category
+                        filterProducts(hash);
+                    }
+                });
+            }
+            
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    filterProducts(this.dataset.category);
+                    // Update URL hash
+                    if (this.dataset.category !== 'all') {
+                        window.location.hash = this.dataset.category;
+                    } else {
+                        history.pushState("", document.title, window.location.pathname);
+                    }
+                });
+            });
+            
+            document.getElementById('modalClose').addEventListener('click', closeProductModal);
+            document.getElementById('productModal').addEventListener('click', function(e) {
+                if (e.target === this) closeProductModal();
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeProductModal();
+            });
+        });
+    </script>
+</body>
+</html>
